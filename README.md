@@ -16,7 +16,7 @@ If you want to try other static web server to serve the page, you can skip this 
 * It caches all resources needed in your browser. Once you open this tool in your browser, you can close your web server.
 * This tool is inspired by PWA. You can install this tool in your device.
 * Every 1 hour this tool will display desktop notification. Click the notification and the tool will open.
-* In `index.html`,  press `submit` button to store your life record in the indexDB, `Save Record` to save records, `Clear Record` to clear all data in the indexDB, and `Reset Timer` to reset the 1 hour timer.
+* In `index.html`,  press `Submit` button to store your life record in the indexDB, `Save Record` to save records, `Clear Record` to clear all data in the indexDB, and `Reset Timer` to reset the 1 hour timer.
 
 # License
 It is [MIT licensed](./LICENSE).
