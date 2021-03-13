@@ -1,0 +1,20 @@
+{
+    "name": "Time Record Every 1 Hour",
+    "short_name": "Record/1hr",
+    "icons": [
+        {
+            "src": "icon-clock.svg",
+            "type": "image/png",
+            "sizes": "150x150"
+        }
+    ],
+    "start_url": "index.html",
+    "scope": ".",
+    "display": "standalone",
+    "description": "An app that reminds user to record what he or she is doing in the past 1 hour and saves that record.",
+    "dir": "ltr",
+    "lang": "en-GB-oed",
+
+    "background_color": "#68e86e",
+    "theme_color": "#f26d6d"
+}
