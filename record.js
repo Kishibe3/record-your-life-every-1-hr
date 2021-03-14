@@ -68,3 +68,11 @@ document.getElementById('reset').addEventListener('click', function () {
         registration.active.postMessage('reset clock');
     });
 });
+
+// reset todayId every day at 00:00
+navigator.serviceWorker.addEventListener('message', function (event) {
+    if (event.data == 'reset todayId') {
+        todayId = 0;
+        console.log('reset todayId successfully');
+    }
+});

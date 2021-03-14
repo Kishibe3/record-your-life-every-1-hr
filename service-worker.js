@@ -76,5 +76,32 @@ self.addEventListener('message', function (event) {
                 body: 'service worker!'
             });
         }, 3600000);
+        console.log('[SW] Reset remind timer');
     }
+});
+
+// execute function at specific local time and repeat afterward
+function executeAtSameTime(config, func) {
+    if (typeof config.time != 'string' || config.time.match(/^\d\d:\d\d:\d\d$/) == null || typeof config.interval != 'number' || !(func instanceof Function))
+        return 'wrong format';
+    let nowTime = (Date.now() + Number(Date().match(/GMT([+,-]\d\d)/)[1]) * 3600000) % 86400000;
+    let targetTime = config.time.split(':').map((v, i) => parseInt(v) * Math.pow(60,2 - i) * 1000).reduce((ac, v) => ac + v);
+    if (targetTime < nowTime)
+        targetTime += 86400000;
+    setTimeout(() => {
+        func();
+        setInterval(func, Math.floor(config.interval));
+    }, targetTime - nowTime);
+}
+
+// reset todayId in record.js
+executeAtSameTime({time: '00:00:00', interval: 86400000}, function () {
+    self.clients.matchAll({
+        includeUncontrolled: true
+    })
+    .then(function (clients) {
+        for (let client of clients) {
+            client.postMessage('reset todayId');
+        }
+    });
 });
